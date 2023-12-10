@@ -219,7 +219,6 @@ static void touchpad_get_xy(lv_coord_t * x, lv_coord_t * y)
     gt9xxx_scan(0);
     *x = tp_dev.x[0];
     *y = tp_dev.y[0];
-    
 }
 
 /*------------------

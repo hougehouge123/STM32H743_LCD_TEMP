@@ -25,6 +25,7 @@
 "stm32h743_lcd_temp\stm32h7xx_hal_exti.o"
 "stm32h743_lcd_temp\stm32h7xx_ll_fmc.o"
 "stm32h743_lcd_temp\stm32h7xx_hal_sram.o"
+"stm32h743_lcd_temp\stm32h7xx_hal_sdram.o"
 "stm32h743_lcd_temp\stm32h7xx_hal_tim.o"
 "stm32h743_lcd_temp\stm32h7xx_hal_tim_ex.o"
 "stm32h743_lcd_temp\stm32h7xx_hal_uart.o"
@@ -269,6 +270,8 @@
 "stm32h743_lcd_temp\lv_switch.o"
 "stm32h743_lcd_temp\lv_table.o"
 "stm32h743_lcd_temp\lv_textarea.o"
+"stm32h743_lcd_temp\sdram.o"
+"stm32h743_lcd_temp\retarget_io.o"
 --strict --scatter "STM32H743_LCD_TEMP\STM32H743_LCD_TEMP.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
