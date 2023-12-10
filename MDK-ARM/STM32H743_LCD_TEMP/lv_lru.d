@@ -1,0 +1,13 @@
+stm32h743_lcd_temp\lv_lru.o: ..\Drivers\LVGL\src\misc\lv_lru.c
+stm32h743_lcd_temp\lv_lru.o: ..\Drivers\LVGL\src\misc\lv_lru.h
+stm32h743_lcd_temp\lv_lru.o: ..\Drivers\LVGL\src\misc\../lv_conf_internal.h
+stm32h743_lcd_temp\lv_lru.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+stm32h743_lcd_temp\lv_lru.o: ..\Drivers\LVGL\src\misc\../lv_conf_kconfig.h
+stm32h743_lcd_temp\lv_lru.o: ..\Drivers\LVGL\lv_conf.h
+stm32h743_lcd_temp\lv_lru.o: ..\Drivers\LVGL\src\misc\lv_types.h
+stm32h743_lcd_temp\lv_lru.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+stm32h743_lcd_temp\lv_lru.o: ..\Drivers\LVGL\src\misc\lv_math.h
+stm32h743_lcd_temp\lv_lru.o: ..\Drivers\LVGL\src\misc\lv_mem.h
+stm32h743_lcd_temp\lv_lru.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+stm32h743_lcd_temp\lv_lru.o: ..\Drivers\LVGL\src\misc\lv_assert.h
+stm32h743_lcd_temp\lv_lru.o: ..\Drivers\LVGL\src\misc\lv_log.h

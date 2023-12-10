@@ -1,0 +1,16 @@
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\src\font\lv_font.c
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\src\font\lv_font.h
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\src\font\../lv_conf_internal.h
+stm32h743_lcd_temp\lv_font.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\src\font\../lv_conf_kconfig.h
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\lv_conf.h
+stm32h743_lcd_temp\lv_font.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+stm32h743_lcd_temp\lv_font.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\src\font\lv_symbol_def.h
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\src\font\../misc/lv_area.h
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\src\font\../misc/lv_utils.h
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\src\font\../misc/lv_log.h
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\src\font\../misc/lv_types.h
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\src\font\../misc/lv_assert.h
+stm32h743_lcd_temp\lv_font.o: ..\Drivers\LVGL\src\font\../misc/lv_mem.h
+stm32h743_lcd_temp\lv_font.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

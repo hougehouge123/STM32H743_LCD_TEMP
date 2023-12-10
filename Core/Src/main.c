@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 #include "fmc.h"
@@ -26,8 +27,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
-#include "ILI93xx.h"
-#include "gt9xxx.h"
+#include "lvgl.h"
+#include "lv_port_disp.h"
+#include "lv_port_indev.h"
+#include "lv_demos.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,10 +98,18 @@ int main(void)
   MX_GPIO_Init();
   MX_FMC_Init();
   MX_USART1_UART_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  TFTLCD_Init();//初始化LCD
-  gt9xxx_init();//初始化触摸屏
   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,1);//点亮背光
+  //初始化lvgl
+	lv_init();
+	//初始化显示屏
+  lv_port_disp_init();
+  //初始化触摸屏
+  lv_port_indev_init();
+  //初始化定时器
+  HAL_TIM_Base_Start_IT(&htim3);
+  lv_demo_widgets();//运行lvgl的demo
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -106,23 +117,10 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
-     gt9xxx_scan(0);
-     //将触摸坐标显示在屏幕上
-      if(tp_dev.sta&TP_PRES_DOWN)
-      {
-        LCD_ShowString(0,0,240,320,24,"x:");
-        LCD_ShowNum(24,0,tp_dev.x[0],5,24);
-        LCD_ShowString(0,24,240,320,24,"y:");
-        LCD_ShowNum(24,24,tp_dev.y[0],5,24);
-      }
-      else
-      {
-        LCD_ShowString(0,0,240,320,24,"x:");
-        LCD_ShowNum(24,0,0,5,24);
-        LCD_ShowString(0,24,240,320,24,"y:");
-        LCD_ShowNum(24,24,0,5,24);
-      }
+    lv_timer_handler();
+    
   }
   /* USER CODE END 3 */
 }

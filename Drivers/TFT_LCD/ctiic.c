@@ -8,7 +8,7 @@
 static void ct_iic_delay(void)
 {
     //ÑÓÊ±2us
-    uint8_t i = 10;
+    uint8_t i = 2;
     while (i>0)
     {
         i--;
