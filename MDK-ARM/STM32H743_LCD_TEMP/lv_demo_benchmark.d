@@ -125,5 +125,3 @@ stm32h743_lcd_temp\lv_demo_benchmark.o: ..\Drivers\LVGL\demos\benchmark\../../sr
 stm32h743_lcd_temp\lv_demo_benchmark.o: ..\Drivers\LVGL\demos\benchmark\../../src/extra/libs/freetype/lv_freetype.h
 stm32h743_lcd_temp\lv_demo_benchmark.o: ..\Drivers\LVGL\demos\benchmark\../../src/extra/libs/rlottie/lv_rlottie.h
 stm32h743_lcd_temp\lv_demo_benchmark.o: ..\Drivers\LVGL\demos\benchmark\../../src/extra/libs/ffmpeg/lv_ffmpeg.h
-stm32h743_lcd_temp\lv_demo_benchmark.o: ..\Drivers\LVGL\demos\benchmark\../music/lv_demo_music.h
-stm32h743_lcd_temp\lv_demo_benchmark.o: ..\Drivers\LVGL\demos\benchmark\../music/../lv_demos.h

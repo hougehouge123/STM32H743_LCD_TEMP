@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H743xx,LV_CONF_INCLUDE_SIMPLE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;    ../Drivers/STM32H7xx_HAL_Driver/Inc;    ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;    ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;    ../Drivers/CMSIS/Include;    ..\Drivers\TFT_LCD;    ..\Drivers\LVGL;    ..\Drivers\LVGL\demos;    ..\Drivers\LVGL\porting;    ..\Drivers\LVGL\src;    ..\Drivers\SDRAM</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;..\Drivers\TFT_LCD;..\Drivers\LVGL;..\Drivers\LVGL\demos;..\Drivers\LVGL\porting;..\Drivers\LVGL\src;..\Drivers\SDRAM</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

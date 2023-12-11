@@ -170,6 +170,3 @@ stm32h743_lcd_temp\main.o: ..\Drivers\LVGL\src/extra/libs/rlottie/lv_rlottie.h
 stm32h743_lcd_temp\main.o: ..\Drivers\LVGL\src/extra/libs/ffmpeg/lv_ffmpeg.h
 stm32h743_lcd_temp\main.o: ..\Drivers\LVGL\porting\lv_port_disp.h
 stm32h743_lcd_temp\main.o: ..\Drivers\LVGL\porting\lv_port_indev.h
-stm32h743_lcd_temp\main.o: ..\Drivers\LVGL\demos\lv_demos.h
-stm32h743_lcd_temp\main.o: ..\Drivers\LVGL\demos\music/lv_demo_music.h
-stm32h743_lcd_temp\main.o: ..\Drivers\LVGL\demos\music/../lv_demos.h

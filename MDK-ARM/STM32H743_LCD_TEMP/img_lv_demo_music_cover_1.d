@@ -125,4 +125,3 @@ stm32h743_lcd_temp\img_lv_demo_music_cover_1.o: ..\Drivers\LVGL\demos\music\asse
 stm32h743_lcd_temp\img_lv_demo_music_cover_1.o: ..\Drivers\LVGL\demos\music\assets\../../../src/extra/libs/freetype/lv_freetype.h
 stm32h743_lcd_temp\img_lv_demo_music_cover_1.o: ..\Drivers\LVGL\demos\music\assets\../../../src/extra/libs/rlottie/lv_rlottie.h
 stm32h743_lcd_temp\img_lv_demo_music_cover_1.o: ..\Drivers\LVGL\demos\music\assets\../../../src/extra/libs/ffmpeg/lv_ffmpeg.h
-stm32h743_lcd_temp\img_lv_demo_music_cover_1.o: ..\Drivers\LVGL\demos\music\assets\../../music/lv_demo_music.h

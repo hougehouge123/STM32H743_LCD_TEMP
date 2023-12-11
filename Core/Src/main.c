@@ -32,7 +32,6 @@
 #include "lvgl.h"
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
-#include "lv_demos.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -117,7 +116,6 @@ int main(void)
   lv_port_indev_init();
   //初始化定时器
   HAL_TIM_Base_Start_IT(&htim3);
-  lv_demo_music();//运行lvgl的demo
   /* USER CODE END 2 */
 
   /* Infinite loop */
