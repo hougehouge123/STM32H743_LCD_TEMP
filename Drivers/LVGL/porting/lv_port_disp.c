@@ -15,7 +15,7 @@
 /*********************
  *      DEFINES
  *********************/
-
+extern DMA_HandleTypeDef hdma_memtomem_dma1_stream0;
 /**********************
  *      TYPEDEFS
  **********************/
@@ -32,7 +32,7 @@ static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_colo
 /**********************
  *  STATIC VARIABLES
  **********************/
-
+static lv_disp_drv_t disp_drv1;
 /**********************
  *      MACROS
  **********************/
@@ -74,16 +74,16 @@ void lv_port_disp_init(void)
      */
 
     /* Example for 1) */
-    static lv_disp_draw_buf_t draw_buf_dsc_1;
+    // static lv_disp_draw_buf_t draw_buf_dsc_1;
     // static lv_color_t buf_1[MY_DISP_HOR_RES * MY_DISP_VER_RES/10];                          /*A buffer for 10 rows*/
-	static lv_color_t buf_1[MY_DISP_HOR_RES * MY_DISP_VER_RES] __attribute__((at(0XC0000000)));   /* 测试用数组 */
-    lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, NULL, MY_DISP_HOR_RES * MY_DISP_VER_RES);   /*Initialize the display buffer*/
+	// // static lv_color_t buf_1[MY_DISP_HOR_RES * MY_DISP_VER_RES/6] __attribute__((at(0XC0000000)));   /* 测试用数组 */
+    // lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, NULL, MY_DISP_HOR_RES * MY_DISP_VER_RES/10);   /*Initialize the display buffer*/
 
 //    /* Example for 2) */
-//    static lv_disp_draw_buf_t draw_buf_dsc_2;
-//    static lv_color_t buf_2_1[MY_DISP_HOR_RES * 10];                        /*A buffer for 10 rows*/
-//    static lv_color_t buf_2_2[MY_DISP_HOR_RES * 10];                        /*An other buffer for 10 rows*/
-//    lv_disp_draw_buf_init(&draw_buf_dsc_2, buf_2_1, buf_2_2, MY_DISP_HOR_RES * 10);   /*Initialize the display buffer*/
+   static lv_disp_draw_buf_t draw_buf_dsc_2;
+   static lv_color_t buf_2_1[MY_DISP_HOR_RES * MY_DISP_VER_RES/6];                        /*A buffer for 10 rows*/
+   static lv_color_t buf_2_2[MY_DISP_HOR_RES *MY_DISP_VER_RES/ 6];                        /*An other buffer for 10 rows*/
+   lv_disp_draw_buf_init(&draw_buf_dsc_2, buf_2_1, buf_2_2, MY_DISP_HOR_RES * MY_DISP_VER_RES/6);   /*Initialize the display buffer*/
 
 //    /* Example for 3) also set disp_drv.full_refresh = 1 below*/
 //    static lv_disp_draw_buf_t draw_buf_dsc_3;
@@ -94,21 +94,20 @@ void lv_port_disp_init(void)
     /*-----------------------------------
      * Register the display in LVGL
      *----------------------------------*/
-
-    static lv_disp_drv_t disp_drv;                         /*Descriptor of a display driver*/
-    lv_disp_drv_init(&disp_drv);                    /*Basic initialization*/
+    /*Descriptor of a display driver*/
+    lv_disp_drv_init(&disp_drv1);                    /*Basic initialization*/
 
     /*Set up the functions to access to your display*/
 
     /*Set the resolution of the display*/
-    disp_drv.hor_res = MY_DISP_HOR_RES;
-    disp_drv.ver_res = MY_DISP_VER_RES;
+    disp_drv1.hor_res = MY_DISP_HOR_RES;
+    disp_drv1.ver_res = MY_DISP_VER_RES;
 
     /*Used to copy the buffer's content to the display*/
-    disp_drv.flush_cb = disp_flush;
+    disp_drv1.flush_cb = disp_flush;
 
     /*Set a display buffer*/
-    disp_drv.draw_buf = &draw_buf_dsc_1;
+    disp_drv1.draw_buf = &draw_buf_dsc_2;
 
     /*Required for Example 3)*/
     //disp_drv.full_refresh = 1
@@ -119,7 +118,7 @@ void lv_port_disp_init(void)
     //disp_drv.gpu_fill_cb = gpu_fill;
 
     /*Finally register the driver*/
-    lv_disp_drv_register(&disp_drv);
+    lv_disp_drv_register(&disp_drv1);
 }
 
 /**********************
@@ -139,11 +138,13 @@ static void disp_init(void)
 static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_color_t * color_p)
 {
     /*The most simple case (but also the slowest) to put all pixels to the screen one-by-one*/
-
-    LCD_Color_Fill(area->x1,area->y1,area->x2,area->y2,(uint16_t *)color_p);
+    LCD_Set_Window(area->x1,area->y1,(area->x2-area->x1)+1,(area->y2-area->y1)+1); //<盖函数是设置LCD屏幕的扫描区域
+    LCD_WriteRAM_Prepare(); //<盖函数是准备写入GRAM
+    HAL_DMA_Start_IT(&hdma_memtomem_dma1_stream0, (uint32_t)color_p, (uint32_t)&TFT_LCD->LCD_RAM,((area->x2+1) - area->x1) * ((area->y2+1) - area->y1));
+    // LCD_Color_Fill(area->x1,area->y1,area->x2,area->y2,(uint16_t *)color_p);
     /*IMPORTANT!!!
      *Inform the graphics library that you are ready with the flushing*/
-    lv_disp_flush_ready(disp_drv);
+    // lv_disp_flush_ready(disp_drv);
 }
 
 /*OPTIONAL: GPU INTERFACE*/
@@ -164,6 +165,10 @@ static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_colo
 //    }
 //}
 
+void LVGL_LCD_FSMC_DMA_pCallback(DMA_HandleTypeDef *_hdma)
+{
+	lv_disp_flush_ready(&disp_drv1);
+}
 
 #else /*Enable this file at the top*/
 

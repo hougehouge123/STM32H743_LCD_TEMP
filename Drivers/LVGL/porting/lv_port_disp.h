@@ -17,7 +17,7 @@ extern "C" {
  *      INCLUDES
  *********************/
 #include "lvgl.h"
-
+#include "dma.h"
 /*********************
  *      DEFINES
  *********************/
@@ -30,7 +30,7 @@ extern "C" {
  * GLOBAL PROTOTYPES
  **********************/
 void lv_port_disp_init(void);
-
+void LVGL_LCD_FSMC_DMA_pCallback(DMA_HandleTypeDef *_hdma);
 /**********************
  *      MACROS
  **********************/

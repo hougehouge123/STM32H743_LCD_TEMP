@@ -125,5 +125,5 @@ stm32h743_lcd_temp\lv_demo_keypad_encoder.o: ..\Drivers\LVGL\demos\keypad_encode
 stm32h743_lcd_temp\lv_demo_keypad_encoder.o: ..\Drivers\LVGL\demos\keypad_encoder\../../src/extra/libs/freetype/lv_freetype.h
 stm32h743_lcd_temp\lv_demo_keypad_encoder.o: ..\Drivers\LVGL\demos\keypad_encoder\../../src/extra/libs/rlottie/lv_rlottie.h
 stm32h743_lcd_temp\lv_demo_keypad_encoder.o: ..\Drivers\LVGL\demos\keypad_encoder\../../src/extra/libs/ffmpeg/lv_ffmpeg.h
-stm32h743_lcd_temp\lv_demo_keypad_encoder.o: ..\Drivers\LVGL\demos\keypad_encoder\../widgets/lv_demo_widgets.h
-stm32h743_lcd_temp\lv_demo_keypad_encoder.o: ..\Drivers\LVGL\demos\keypad_encoder\../widgets/../lv_demos.h
+stm32h743_lcd_temp\lv_demo_keypad_encoder.o: ..\Drivers\LVGL\demos\keypad_encoder\../music/lv_demo_music.h
+stm32h743_lcd_temp\lv_demo_keypad_encoder.o: ..\Drivers\LVGL\demos\keypad_encoder\../music/../lv_demos.h

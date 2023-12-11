@@ -2,6 +2,7 @@
 "stm32h743_lcd_temp\startup_stm32h743xx.o"
 "stm32h743_lcd_temp\main.o"
 "stm32h743_lcd_temp\gpio.o"
+"stm32h743_lcd_temp\dma.o"
 "stm32h743_lcd_temp\fmc.o"
 "stm32h743_lcd_temp\tim.o"
 "stm32h743_lcd_temp\usart.o"

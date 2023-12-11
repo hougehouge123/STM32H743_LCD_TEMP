@@ -124,7 +124,7 @@ stm32h743_lcd_temp\lv_port_disp.o: ..\Drivers\LVGL\src/extra/libs/sjpg/lv_sjpg.h
 stm32h743_lcd_temp\lv_port_disp.o: ..\Drivers\LVGL\src/extra/libs/freetype/lv_freetype.h
 stm32h743_lcd_temp\lv_port_disp.o: ..\Drivers\LVGL\src/extra/libs/rlottie/lv_rlottie.h
 stm32h743_lcd_temp\lv_port_disp.o: ..\Drivers\LVGL\src/extra/libs/ffmpeg/lv_ffmpeg.h
-stm32h743_lcd_temp\lv_port_disp.o: ..\Drivers\TFT_LCD\ILI93xx.h
+stm32h743_lcd_temp\lv_port_disp.o: ../Core/Inc/dma.h
 stm32h743_lcd_temp\lv_port_disp.o: ../Core/Inc/main.h
 stm32h743_lcd_temp\lv_port_disp.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h
 stm32h743_lcd_temp\lv_port_disp.o: ../Core/Inc/stm32h7xx_hal_conf.h
@@ -163,3 +163,4 @@ stm32h743_lcd_temp\lv_port_disp.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx
 stm32h743_lcd_temp\lv_port_disp.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h
 stm32h743_lcd_temp\lv_port_disp.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h
 stm32h743_lcd_temp\lv_port_disp.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
+stm32h743_lcd_temp\lv_port_disp.o: ..\Drivers\TFT_LCD\ILI93xx.h

@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "dma.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -80,9 +81,6 @@ int main(void)
   /* MPU Configuration--------------------------------------------------------*/
   MPU_Config();
 
-  /* Enable I-Cache---------------------------------------------------------*/
-  // SCB_EnableICache();
-
   /* Enable D-Cache---------------------------------------------------------*/
   SCB_EnableDCache();
 
@@ -106,6 +104,7 @@ int main(void)
   MX_GPIO_Init();
   MX_FMC_Init();
   MX_USART1_UART_Init();
+  MX_DMA_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   sdram_init();//初始化sdram
@@ -118,7 +117,7 @@ int main(void)
   lv_port_indev_init();
   //初始化定时器
   HAL_TIM_Base_Start_IT(&htim3);
-  lv_demo_widgets();//运行lvgl的demo
+  lv_demo_music();//运行lvgl的demo
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -126,7 +125,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    //触摸扫描
+
     /* USER CODE BEGIN 3 */
 		lv_timer_handler();
   }

@@ -69,9 +69,9 @@ void MX_FMC_Init(void)
   Timing.DataLatency = 17;
   Timing.AccessMode = FMC_ACCESS_MODE_A;
   /* ExtTiming */
-  ExtTiming.AddressSetupTime = 15;
+  ExtTiming.AddressSetupTime = 4;
   ExtTiming.AddressHoldTime = 15;
-  ExtTiming.DataSetupTime = 15;
+  ExtTiming.DataSetupTime = 4;
   ExtTiming.BusTurnAroundDuration = 1;
   ExtTiming.CLKDivision = 16;
   ExtTiming.DataLatency = 17;

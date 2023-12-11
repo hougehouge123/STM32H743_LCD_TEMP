@@ -125,5 +125,5 @@ stm32h743_lcd_temp\lv_demo_stress.o: ..\Drivers\LVGL\demos\stress\../../src/extr
 stm32h743_lcd_temp\lv_demo_stress.o: ..\Drivers\LVGL\demos\stress\../../src/extra/libs/freetype/lv_freetype.h
 stm32h743_lcd_temp\lv_demo_stress.o: ..\Drivers\LVGL\demos\stress\../../src/extra/libs/rlottie/lv_rlottie.h
 stm32h743_lcd_temp\lv_demo_stress.o: ..\Drivers\LVGL\demos\stress\../../src/extra/libs/ffmpeg/lv_ffmpeg.h
-stm32h743_lcd_temp\lv_demo_stress.o: ..\Drivers\LVGL\demos\stress\../widgets/lv_demo_widgets.h
-stm32h743_lcd_temp\lv_demo_stress.o: ..\Drivers\LVGL\demos\stress\../widgets/../lv_demos.h
+stm32h743_lcd_temp\lv_demo_stress.o: ..\Drivers\LVGL\demos\stress\../music/lv_demo_music.h
+stm32h743_lcd_temp\lv_demo_stress.o: ..\Drivers\LVGL\demos\stress\../music/../lv_demos.h

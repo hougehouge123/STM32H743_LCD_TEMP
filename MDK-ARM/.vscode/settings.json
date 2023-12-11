@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "fmc.h": "c"
+        "fmc.h": "c",
+        "dma.h": "c"
     }
 }
