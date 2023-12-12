@@ -10,6 +10,7 @@
         "mpu.h": "c",
         "main.h": "c",
         "lv_demos.h": "c",
-        "lv_demo_widgets.h": "c"
+        "lv_demo_widgets.h": "c",
+        "stdio.h": "c"
     }
 }

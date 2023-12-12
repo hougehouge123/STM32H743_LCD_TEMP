@@ -46,6 +46,10 @@ stm32h743_lcd_temp\main.o: ../Core/Inc/usart.h
 stm32h743_lcd_temp\main.o: ../Core/Inc/gpio.h
 stm32h743_lcd_temp\main.o: ../Core/Inc/fmc.h
 stm32h743_lcd_temp\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+stm32h743_lcd_temp\main.o: ..\Drivers\MALLOC\malloc.h
+stm32h743_lcd_temp\main.o: ..\Drivers\NAND\ftl.h
+stm32h743_lcd_temp\main.o: ..\Drivers\Delay\delay.h
+stm32h743_lcd_temp\main.o: ..\Drivers\MPU\mpu.h
 stm32h743_lcd_temp\main.o: ..\Drivers\SDRAM\sdram.h
 stm32h743_lcd_temp\main.o: ..\Drivers\LVGL\lvgl.h
 stm32h743_lcd_temp\main.o: ..\Drivers\LVGL\lv_conf.h
