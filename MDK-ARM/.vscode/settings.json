@@ -12,6 +12,7 @@
         "lv_demos.h": "c",
         "lv_demo_widgets.h": "c",
         "stdio.h": "c",
-        "ff.h": "c"
+        "ff.h": "c",
+        "exfuns.h": "c"
     }
 }

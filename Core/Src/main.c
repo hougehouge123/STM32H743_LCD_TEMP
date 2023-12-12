@@ -30,6 +30,9 @@
 #include "stdio.h"
 #include "malloc.h"
 #include "ftl.h"
+#include "ff.h"
+#include "exfuns.h"
+#include "nand.h"
 #include "delay.h"
 #include "mpu.h"
 #include "sdram.h"
@@ -41,7 +44,6 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define __FPU_USED       1U
 #define __FPU_PRESENT    1U
 /* USER CODE END PTD */
 
@@ -77,6 +79,17 @@ void fpu_enable(void)
   #endif
 }
 
+void getfree()
+{
+  uint32_t total, free;
+  printf("norflash获取容量%d\n",exfuns_get_free((uint8_t *)"0:", &total, &free));
+  delay_ms(1000);
+  printf("norflash获取容量%d\n",exfuns_get_free((uint8_t *)"0:", &total, &free));
+  printf("NORFLASH总容量为:%dM,剩余容量为:%dM\r\n", total>>10, free>>10);
+  delay_ms(1000);
+  printf("nandflash获取容量%d\n",exfuns_get_free((uint8_t *)"1:", &total, &free));
+  printf("NANDFLASH总容量为:%dM,剩余容量为:%dM\r\n", total>>10, free>>10);
+}
 /* USER CODE END 0 */
 
 /**
@@ -118,11 +131,14 @@ int main(void)
   MX_USART1_UART_Init();
   MX_DMA_Init();
   MX_TIM3_Init();
-  /* USER CODE BEGIN 2 */
+    /* USER CODE BEGIN 2 */
   delay_init(480);
   sdram_init();//初始化sdram
-  my_mem_init(SRAMEX);                       /* 初始化外部内存池(SDRAM) */
-  ftl_init();//初始化ftl
+  my_mem_init(SRAMEX); // 初始化外部内存池(SDRAM)
+  ftl_init();//初始化nand_flash
+  exfuns_init();//初始化文件系统
+  fatfs_init();//初始化fatfs
+  getfree();//获取剩余容量
   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,1);//点亮背光
 	lv_init();//初始化lvgl
   lv_port_disp_init();//初始化显示屏
@@ -207,6 +223,11 @@ int fputc(int ch, FILE *f)
  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xffff);
  return ch;
 
+}
+//避免进入半主机模式
+void _sys_exit(int x)
+{
+ x = x;
 }
 /* USER CODE END 4 */
 

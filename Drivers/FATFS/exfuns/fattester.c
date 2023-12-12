@@ -1,27 +1,3 @@
-/**
- ****************************************************************************************************
- * @file        fattester.c
- * @author      正点原子团队(ALIENTEK)
- * @version     V1.0
- * @date        2022-09-06
- * @brief       FATFS 测试代码
- * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
- ****************************************************************************************************
- * @attention
- *
- * 实验平台:正点原子 阿波罗 H743开发板
- * 在线视频:www.yuanzige.com
- * 技术论坛:www.openedv.com
- * 公司网址:www.alientek.com
- * 购买地址:openedv.taobao.com
- *
- * 修改说明
- * V1.0 20220906
- * 第一次发布
- *
- ****************************************************************************************************
- */
-
 #include "string.h"
 #include "malloc.h"
 #include "exfuns.h"
@@ -46,8 +22,8 @@ _m_fattester fattester;
  */
 uint8_t mf_init(void)
 {
-    fattester.file = (FIL *)mymalloc(SRAMIN, sizeof(FIL));      /* 为file申请内存 */
-    fattester.fatbuf = (uint8_t *)mymalloc(SRAMIN, 512);        /* 为fattester.fatbuf申请内存 */
+    fattester.file = (FIL *)mymalloc(SRAMEX, sizeof(FIL));      /* 为file申请内存 */
+    fattester.fatbuf = (uint8_t *)mymalloc(SRAMEX, 512);        /* 为fattester.fatbuf申请内存 */
 
     if (fattester.file && fattester.fatbuf)
     {
@@ -68,8 +44,8 @@ uint8_t mf_init(void)
  */
 void mf_free(void)
 {
-    myfree(SRAMIN, fattester.file);
-    myfree(SRAMIN, fattester.fatbuf);
+    myfree(SRAMEX, fattester.file);
+    myfree(SRAMEX, fattester.fatbuf);
 }
 
 /**

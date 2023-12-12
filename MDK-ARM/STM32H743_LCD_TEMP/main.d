@@ -35,6 +35,7 @@ stm32h743_lcd_temp\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c
 stm32h743_lcd_temp\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h
 stm32h743_lcd_temp\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h
 stm32h743_lcd_temp\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h
+stm32h743_lcd_temp\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_qspi.h
 stm32h743_lcd_temp\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sdram.h
 stm32h743_lcd_temp\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h
 stm32h743_lcd_temp\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h
@@ -48,6 +49,10 @@ stm32h743_lcd_temp\main.o: ../Core/Inc/fmc.h
 stm32h743_lcd_temp\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 stm32h743_lcd_temp\main.o: ..\Drivers\MALLOC\malloc.h
 stm32h743_lcd_temp\main.o: ..\Drivers\NAND\ftl.h
+stm32h743_lcd_temp\main.o: ..\Drivers\FATFS\source\ff.h
+stm32h743_lcd_temp\main.o: ..\Drivers\FATFS\source\ffconf.h
+stm32h743_lcd_temp\main.o: ..\Drivers\FATFS\exfuns\exfuns.h
+stm32h743_lcd_temp\main.o: ..\Drivers\NAND\nand.h
 stm32h743_lcd_temp\main.o: ..\Drivers\Delay\delay.h
 stm32h743_lcd_temp\main.o: ..\Drivers\MPU\mpu.h
 stm32h743_lcd_temp\main.o: ..\Drivers\SDRAM\sdram.h

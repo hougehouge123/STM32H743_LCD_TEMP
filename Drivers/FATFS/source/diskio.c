@@ -1,27 +1,3 @@
-/**
- ****************************************************************************************************
- * @file        diskio.c
- * @author      正点原子团队(ALIENTEK)
- * @version     V1.0
- * @date        2022-09-06
- * @brief       FATFS底层(diskio) 驱动代码
- * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
- ****************************************************************************************************
- * @attention
- *
- * 实验平台:正点原子 阿波罗 H743开发板
- * 在线视频:www.yuanzige.com
- * 技术论坛:www.openedv.com
- * 公司网址:www.alientek.com
- * 购买地址:openedv.taobao.com
- *
- * 修改说明
- * V1.0 20220906
- * 第一次发布
- *
- ****************************************************************************************************
- */
-
 #include "malloc.h"
 #include "nand.h"
 #include "ftl.h"
@@ -29,9 +5,8 @@
 #include "norflash.h"
 
 
-#define SD_CARD     0       /* SD卡,卷标为0 */
-#define EX_FLASH    1       /* 外部spi flash,卷标为1 */
-#define EX_NAND     2       /* 外部NAND FLASH卷标为2 */
+#define EX_FLASH    0       /* 外部spi flash,卷标为0 */
+#define EX_NAND     1       /* 外部NAND FLASH卷标为1 */
 
 /**
  * 对于25Q256 FLASH芯片, 我们规定前 25M 给FATFS使用, 25M以后
@@ -74,10 +49,6 @@ DSTATUS disk_initialize (
 
     switch (pdrv)
     {
-        case SD_CARD:           /* SD卡 */
-            res = sd_init();    /* SD卡初始化 */
-            break;
-
         case EX_FLASH:          /* 外部flash */
             norflash_init(); 
             break;
@@ -125,17 +96,6 @@ DRESULT disk_read (
 
     switch (pdrv)
     {
-        case SD_CARD:       /* SD卡 */
-            res = sd_read_disk(buff, sector, count);
-
-            while (res)     /* 读出错 */
-            {
-                //printf("sd rd error:%d\r\n", res);
-                sd_init();  /* 重新初始化SD卡 */
-                res = sd_read_disk(buff, sector, count);
-            }
-            break;
-
         case EX_FLASH:      /* 外部flash */
             for (; count > 0; count--)
             {
@@ -189,17 +149,6 @@ DRESULT disk_write (
 
     switch (pdrv)
     {
-        case SD_CARD:       /* SD卡 */
-            res = sd_write_disk((uint8_t *)buff, sector, count);
-
-            while (res)     /* 写出错 */
-            {
-                //printf("sd wr error:%d\r\n", res);
-                sd_init();  /* 重新初始化SD卡 */
-                res = sd_write_disk((uint8_t *)buff, sector, count);
-            }
-            break;
-
         case EX_FLASH:      /* 外部flash */
             for (; count > 0; count--)
             {
@@ -244,35 +193,7 @@ DRESULT disk_ioctl (
 {
     DRESULT res;
 
-    if (pdrv == SD_CARD)    /* SD卡 */
-    {
-        switch (cmd)
-        {
-            case CTRL_SYNC:
-                res = RES_OK;
-                break;
-
-            case GET_SECTOR_SIZE:
-                *(DWORD *)buff = 512;
-                res = RES_OK;
-                break;
-
-            case GET_BLOCK_SIZE:
-                *(WORD *)buff = g_sd_card_info_handle.LogBlockSize;
-                res = RES_OK;
-                break;
-
-            case GET_SECTOR_COUNT:
-                *(DWORD *)buff = g_sd_card_info_handle.LogBlockNbr;
-                res = RES_OK;
-                break;
-
-            default:
-                res = RES_PARERR;
-                break;
-        }
-    }
-    else if (pdrv == EX_FLASH)  /* 外部FLASH */
+    if (pdrv == EX_FLASH)  /* 外部FLASH */
     {
         switch (cmd)
         {

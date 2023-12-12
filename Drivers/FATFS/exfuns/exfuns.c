@@ -1,27 +1,3 @@
-/**
- ****************************************************************************************************
- * @file        exfuns.c
- * @author      正点原子团队(ALIENTEK)
- * @version     V1.0
- * @date        2022-09-06
- * @brief       FATFS 扩展代码
- * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
- ****************************************************************************************************
- * @attention
- *
- * 实验平台:正点原子 阿波罗 H743开发板
- * 在线视频:www.yuanzige.com
- * 技术论坛:www.openedv.com
- * 公司网址:www.alientek.com
- * 购买地址:openedv.taobao.com
- *
- * 修改说明
- * V1.0 20220906
- * 第一次发布
- *
- ****************************************************************************************************
- */
-
 #include "string.h"
 #include "malloc.h"
 #include "exfuns.h"
@@ -64,7 +40,7 @@ uint8_t exfuns_init(void)
 
     for (i = 0; i < FF_VOLUMES; i++)
     {
-        fs[i] = (FATFS *)mymalloc(SRAMIN, sizeof(FATFS));   /* 为磁盘i工作区申请内存 */
+        fs[i] = (FATFS *)mymalloc(SRAMEX, sizeof(FATFS));   /* 为磁盘i工作区申请内存 */
 
         if (!fs[i])
         {
@@ -252,9 +228,9 @@ uint8_t exfuns_file_copy(uint8_t(*fcpymsg)(uint8_t *pname, uint8_t pct, uint8_t 
     uint8_t curpct = 0;
     unsigned long long lcpdsize = cpdsize;
     
-    fsrc = (FIL *)mymalloc(SRAMIN, sizeof(FIL));    /* 申请内存 */
-    fdst = (FIL *)mymalloc(SRAMIN, sizeof(FIL));
-    fbuf = (uint8_t *)mymalloc(SRAMIN, 8192);
+    fsrc = (FIL *)mymalloc(SRAMEX, sizeof(FIL));    /* 申请内存 */
+    fdst = (FIL *)mymalloc(SRAMEX, sizeof(FIL));
+    fbuf = (uint8_t *)mymalloc(SRAMEX, 8192);
 
     if (fsrc == NULL || fdst == NULL || fbuf == NULL)
     {
@@ -327,9 +303,9 @@ uint8_t exfuns_file_copy(uint8_t(*fcpymsg)(uint8_t *pname, uint8_t pct, uint8_t 
         }
     }
 
-    myfree(SRAMIN, fsrc); /* 释放内存 */
-    myfree(SRAMIN, fdst);
-    myfree(SRAMIN, fbuf);
+    myfree(SRAMEX, fsrc); /* 释放内存 */
+    myfree(SRAMEX, fdst);
+    myfree(SRAMEX, fbuf);
     return res;
 }
 
@@ -377,8 +353,8 @@ uint32_t exfuns_get_folder_size(uint8_t *fdname)
     uint16_t pathlen = 0;   /* 目标路径长度 */
     uint32_t fdsize = 0;
 
-    fddir = (DIR *)mymalloc(SRAMIN, sizeof(DIR));   /* 申请内存 */
-    finfo = (FILINFO *)mymalloc(SRAMIN, sizeof(FILINFO));
+    fddir = (DIR *)mymalloc(SRAMEX, sizeof(DIR));   /* 申请内存 */
+    finfo = (FILINFO *)mymalloc(SRAMEX, sizeof(FILINFO));
 
     if (fddir == NULL || finfo == NULL)
     {
@@ -387,7 +363,7 @@ uint32_t exfuns_get_folder_size(uint8_t *fdname)
 
     if (res == 0)
     {
-        pathname = mymalloc(SRAMIN, MAX_PATHNAME_DEPTH);
+        pathname = mymalloc(SRAMEX, MAX_PATHNAME_DEPTH);
 
         if (pathname == NULL)
         {
@@ -432,12 +408,12 @@ uint32_t exfuns_get_folder_size(uint8_t *fdname)
                 }
             }
 
-            myfree(SRAMIN, pathname);
+            myfree(SRAMEX, pathname);
         }
     }
 
-    myfree(SRAMIN, fddir);
-    myfree(SRAMIN, finfo);
+    myfree(SRAMEX, fddir);
+    myfree(SRAMEX, finfo);
 
     if (res)
     {
@@ -496,9 +472,9 @@ uint8_t exfuns_folder_copy(uint8_t(*fcpymsg)(uint8_t *pname, uint8_t pct, uint8_
     uint16_t srcpathlen = 0;    /* 源路径长度 */
 
 
-    srcdir = (DIR *)mymalloc(SRAMIN, sizeof(DIR));  /* 申请内存 */
-    dstdir = (DIR *)mymalloc(SRAMIN, sizeof(DIR));
-    finfo = (FILINFO *)mymalloc(SRAMIN, sizeof(FILINFO));
+    srcdir = (DIR *)mymalloc(SRAMEX, sizeof(DIR));  /* 申请内存 */
+    dstdir = (DIR *)mymalloc(SRAMEX, sizeof(DIR));
+    finfo = (FILINFO *)mymalloc(SRAMEX, sizeof(FILINFO));
 
     if (srcdir == NULL || dstdir == NULL || finfo == NULL)
     {
@@ -507,8 +483,8 @@ uint8_t exfuns_folder_copy(uint8_t(*fcpymsg)(uint8_t *pname, uint8_t pct, uint8_
 
     if (res == 0)
     {
-        dstpathname = mymalloc(SRAMIN, MAX_PATHNAME_DEPTH);
-        srcpathname = mymalloc(SRAMIN, MAX_PATHNAME_DEPTH);
+        dstpathname = mymalloc(SRAMEX, MAX_PATHNAME_DEPTH);
+        srcpathname = mymalloc(SRAMEX, MAX_PATHNAME_DEPTH);
 
         if (dstpathname == NULL || srcpathname == NULL)
         {
@@ -584,17 +560,51 @@ uint8_t exfuns_folder_copy(uint8_t(*fcpymsg)(uint8_t *pname, uint8_t pct, uint8_
                 }
             }
 
-            myfree(SRAMIN, dstpathname);
-            myfree(SRAMIN, srcpathname);
+            myfree(SRAMEX, dstpathname);
+            myfree(SRAMEX, srcpathname);
         }
     }
 
-    myfree(SRAMIN, srcdir);
-    myfree(SRAMIN, dstdir);
-    myfree(SRAMIN, finfo);
+    myfree(SRAMEX, srcdir);
+    myfree(SRAMEX, dstdir);
+    myfree(SRAMEX, finfo);
     return res;
 }
 
-
+void fatfs_init()
+{
+  uint8_t res = f_mount(fs[0], "0:", 1);
+  if (res == 0X0D)                        /* FLASH磁盘,FAT文件系统错误,重新格式化FLASH */
+    {
+        res = f_mkfs("0:", 0, 0, FF_MAX_SS);                                        /* 格式化FLASH,1:,盘符;0,使用默认格式化参数 */
+        if (res == 0)
+        {
+            printf("NORFLASH格式化成功\n");
+            f_setlabel((const TCHAR *)"0:NORFLASH");                                /* 设置Flash磁盘的名字为：ALIENTEK */
+        }
+        else
+        {
+            printf("NORFLASH格式化失败\n");
+        }
+        delay_ms(1000);
+    }
+  else if(res == 0)   printf("norlash存在文件系统\n");
+  res = f_mount(fs[1], "1:", 1);                                                  /* 挂载NAND FLASH. */
+    if (res == 0X0D)                                                                /* NAND FLASH磁盘,FAT文件系统错误,重新格式化NAND FLASH */
+    {  
+        res = f_mkfs("1:", 0, 0, FF_MAX_SS);                                        /* 格式化NAND FLASH,2:,盘符;0,使用默认格式化参数 */
+        if (res == 0)
+        {
+            f_setlabel((const TCHAR *)"1:NANDFLASH");                                /* 设置Flash磁盘的名字为：NANDDISK */
+            printf("NANDFLASH格式化成功\n");
+        }
+        else
+        {
+            printf("NANDFLASH格式化失败\n");
+        }
+        delay_ms(1000);
+    }
+    else if(res == 0)   printf("nandflash存在文件系统\n");
+}
 
 

@@ -166,7 +166,7 @@
 / Drive/Volume Configurations
 /---------------------------------------------------------------------------*/
 
-#define FF_VOLUMES		3   /* 支持3个磁盘 */
+#define FF_VOLUMES		2   /* 支持3个磁盘 */
 /* Number of volumes (logical drives) to be used. (1-10) */
 
 
