@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H743xx,LV_CONF_INCLUDE_SIMPLE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;       ../Drivers/STM32H7xx_HAL_Driver/Inc;       ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;       ../Drivers/CMSIS/Device/ST/STM32H7xx/Include;       ../Drivers/CMSIS/Include;       ..\Drivers\TFT_LCD;       ..\Drivers\LVGL;       ..\Drivers\LVGL\demos;       ..\Drivers\LVGL\porting;       ..\Drivers\LVGL\src;       ..\Drivers\SDRAM;       ..\Drivers\MALLOC;       ..\Drivers\Delay;       ..\Drivers\NAND;       ..\Drivers\MPU</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;..\Drivers\TFT_LCD;..\Drivers\LVGL;..\Drivers\LVGL\demos;..\Drivers\LVGL\porting;..\Drivers\LVGL\src;..\Drivers\SDRAM;..\Drivers\MALLOC;..\Drivers\Delay;..\Drivers\NAND;..\Drivers\MPU;..\Drivers\FATFS\source;..\Drivers\FATFS\exfuns;..\Drivers\NORFLASH;..\Drivers\QSPI</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -2902,6 +2902,106 @@
               <FileName>nandtester.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Drivers\NAND\nandtester.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FATFS/Src</GroupName>
+          <Files>
+            <File>
+              <FileName>ffunicode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\FATFS\source\ffunicode.c</FilePath>
+            </File>
+            <File>
+              <FileName>ffsystem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\FATFS\source\ffsystem.c</FilePath>
+            </File>
+            <File>
+              <FileName>ffconf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\FATFS\source\ffconf.h</FilePath>
+            </File>
+            <File>
+              <FileName>ff.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\FATFS\source\ff.h</FilePath>
+            </File>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\FATFS\source\ff.c</FilePath>
+            </File>
+            <File>
+              <FileName>diskio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\FATFS\source\diskio.h</FilePath>
+            </File>
+            <File>
+              <FileName>diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\FATFS\source\diskio.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FATFS/Func</GroupName>
+          <Files>
+            <File>
+              <FileName>exfuns.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\FATFS\exfuns\exfuns.c</FilePath>
+            </File>
+            <File>
+              <FileName>exfuns.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\FATFS\exfuns\exfuns.h</FilePath>
+            </File>
+            <File>
+              <FileName>fattester.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\FATFS\exfuns\fattester.c</FilePath>
+            </File>
+            <File>
+              <FileName>fattester.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\FATFS\exfuns\fattester.h</FilePath>
+            </File>
+            <File>
+              <FileName>myffunicode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\FATFS\exfuns\myffunicode.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>NORFLASH</GroupName>
+          <Files>
+            <File>
+              <FileName>norflash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\NORFLASH\norflash.c</FilePath>
+            </File>
+            <File>
+              <FileName>norflash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\NORFLASH\norflash.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>QSPI</GroupName>
+          <Files>
+            <File>
+              <FileName>qspi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\QSPI\qspi.c</FilePath>
+            </File>
+            <File>
+              <FileName>qspi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\QSPI\qspi.h</FilePath>
             </File>
           </Files>
         </Group>
