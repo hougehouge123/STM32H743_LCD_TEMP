@@ -28,6 +28,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
+#include "malloc.h"
+#include "ftl.h"
+#include "delay.h"
+#include "mpu.h"
 #include "sdram.h"
 #include "lvgl.h"
 #include "lv_port_disp.h"
@@ -75,11 +79,11 @@ static void MPU_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  mpu_memory_protection();//初始化mpu
   /* USER CODE END 1 */
 
   /* MPU Configuration--------------------------------------------------------*/
-  MPU_Config();
+//  MPU_Config();
 
   /* Enable D-Cache---------------------------------------------------------*/
   SCB_EnableDCache();
@@ -90,7 +94,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+ 
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -107,14 +111,23 @@ int main(void)
   MX_DMA_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+  delay_init(400);
   sdram_init();//初始化sdram
+//  my_mem_init(SRAMIN);                       /* 初始化内部内存池(AXI) */
+//  my_mem_init(SRAMEX);                       /* 初始化外部内存池(SDRAM) */
+//  my_mem_init(SRAM12);                       /* 初始化SRAM12内存池(SRAM1+SRAM2) */
+//  my_mem_init(SRAM4);                        /* 初始化SRAM4内存池(SRAM4) */
+//  my_mem_init(SRAMDTCM);                     /* 初始化DTCM内存池(DTCM) */
+//  my_mem_init(SRAMITCM);                     /* 初始化ITCM内存池(ITCM) */
+//  ftl_init();//初始化ftl
   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,1);//点亮背光
 	lv_init();//初始化lvgl
   lv_port_disp_init();//初始化显示屏
   lv_port_indev_init();//初始化触摸屏
   HAL_TIM_Base_Start_IT(&htim3);//初始化定时器
-  /* USER CODE END 2 */
   lv_demo_widgets();
+  /* USER CODE END 2 */
+  
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -153,7 +166,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 4;
-  RCC_OscInitStruct.PLL.PLLN = 60;
+  RCC_OscInitStruct.PLL.PLLN = 50;
   RCC_OscInitStruct.PLL.PLLP = 2;
   RCC_OscInitStruct.PLL.PLLQ = 2;
   RCC_OscInitStruct.PLL.PLLR = 2;
@@ -177,7 +190,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
   RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
   {
     Error_Handler();
   }
