@@ -17,7 +17,7 @@ uint8_t test_writepage(uint32_t pagenum, uint16_t colnum, uint16_t writebytes)
     uint8_t *pbuf;
     uint8_t sta = 0;
     uint16_t i = 0;
-    pbuf = mymalloc(SRAMIN, 5000);
+    pbuf = mymalloc(SRAMEX, 5000);
 
     for (i = 0; i < writebytes; i++)                          /* 准备要写入的数据,填充数据,从0开始增大 */
     { 
@@ -25,7 +25,7 @@ uint8_t test_writepage(uint32_t pagenum, uint16_t colnum, uint16_t writebytes)
     }
 
     sta = nand_writepage(pagenum, colnum, pbuf, writebytes);  /* 向nand写入数据 */
-    myfree(SRAMIN, pbuf);                                     /* 释放内存 */
+    myfree(SRAMEX, pbuf);                                     /* 释放内存 */
 
     return sta;
 }
@@ -43,7 +43,7 @@ uint8_t test_readpage(uint32_t pagenum, uint16_t colnum, uint16_t readbytes)
     uint8_t sta = 0;
     uint16_t i = 0;
 
-    pbuf = mymalloc(SRAMIN, 5000);
+    pbuf = mymalloc(SRAMEX, 5000);
     sta = nand_readpage(pagenum, colnum, pbuf, readbytes);             /* 读取数据 */
 
     if (sta == 0 || sta == NSTA_ECC1BITERR || sta == NSTA_ECC2BITERR)  /* 读取成功 */
@@ -57,7 +57,7 @@ uint8_t test_readpage(uint32_t pagenum, uint16_t colnum, uint16_t readbytes)
         printf("\r\nend\r\n");
     }
 
-    myfree(SRAMIN, pbuf);                                              /* 释放内存 */
+    myfree(SRAMEX, pbuf);                                              /* 释放内存 */
 
     return sta;
 }
@@ -76,7 +76,7 @@ uint8_t test_copypageandwrite(uint32_t spnum, uint32_t dpnum, uint16_t colnum, u
     uint8_t *pbuf;
     uint8_t sta = 0;
     uint16_t i = 0;
-    pbuf = mymalloc(SRAMIN, 5000);
+    pbuf = mymalloc(SRAMEX, 5000);
 
     for (i = 0; i < writebytes; i++)                                        /* 准备要写入的数据,填充数据,从0X80开始增大 */
     { 
@@ -84,7 +84,7 @@ uint8_t test_copypageandwrite(uint32_t spnum, uint32_t dpnum, uint16_t colnum, u
     }
 
     sta = nand_copypage_withwrite(spnum, dpnum, colnum, pbuf, writebytes);  /* 向nand写入数据 */
-    myfree(SRAMIN, pbuf);                                                   /* 释放内存 */
+    myfree(SRAMEX, pbuf);                                                   /* 释放内存 */
 
     return sta;
 }
@@ -101,7 +101,7 @@ uint8_t test_readspare(uint32_t pagenum, uint16_t colnum, uint16_t readbytes)
     uint8_t *pbuf;
     uint8_t sta = 0;
     uint16_t i = 0;
-    pbuf = mymalloc(SRAMIN, 512);
+    pbuf = mymalloc(SRAMEX, 512);
     sta = nand_readspare(pagenum, colnum, pbuf, readbytes);  /* 读取数据 */
 
     if (sta == 0)                                            /* 读取成功 */
@@ -116,7 +116,7 @@ uint8_t test_readspare(uint32_t pagenum, uint16_t colnum, uint16_t readbytes)
         printf("\r\nend\r\n");
     }
 
-    myfree(SRAMIN, pbuf);                                    /* 释放内存 */
+    myfree(SRAMEX, pbuf);                                    /* 释放内存 */
 
     return sta;
 }
@@ -165,7 +165,7 @@ uint8_t test_ftlwritesectors(uint32_t secx, uint16_t secsize, uint16_t seccnt)
     uint8_t *pbuf;
     uint8_t sta = 0;
     uint32_t i = 0;
-    pbuf = mymalloc(SRAMIN, secsize * seccnt);
+    pbuf = mymalloc(SRAMEX, secsize * seccnt);
 
     for (i = 0; i < secsize * seccnt; i++)                 /* 准备要写入的数据,填充数据,从0开始增大 */
     { 
@@ -174,7 +174,7 @@ uint8_t test_ftlwritesectors(uint32_t secx, uint16_t secsize, uint16_t seccnt)
 
     sta = ftl_write_sectors(pbuf, secx, secsize, seccnt);  /* 向nand写入数据 */
 
-    myfree(SRAMIN, pbuf);                                  /* 释放内存 */
+    myfree(SRAMEX, pbuf);                                  /* 释放内存 */
 
     return sta;
 }
@@ -192,7 +192,7 @@ uint8_t test_ftlreadsectors(uint32_t secx, uint16_t secsize, uint16_t seccnt)
     uint8_t sta = 0;
     uint32_t i = 0;
 
-    pbuf = mymalloc(SRAMIN, secsize * seccnt);   
+    pbuf = mymalloc(SRAMEX, secsize * seccnt);   
     sta = ftl_read_sectors(pbuf, secx, secsize, seccnt);  /* 读取数据 */
 
     if (sta == 0)
@@ -207,7 +207,7 @@ uint8_t test_ftlreadsectors(uint32_t secx, uint16_t secsize, uint16_t seccnt)
         printf("\r\nend\r\n");
     }
 
-    myfree(SRAMIN, pbuf);                                 /* 释放内存 */
+    myfree(SRAMEX, pbuf);                                 /* 释放内存 */
 
     return sta;
 }

@@ -58,4 +58,3 @@ stm32h743_lcd_temp\lv_refr.o: ..\Drivers\LVGL\src\core\lv_disp.h
 stm32h743_lcd_temp\lv_refr.o: ..\Drivers\LVGL\src\core\lv_theme.h
 stm32h743_lcd_temp\lv_refr.o: ..\Drivers\LVGL\src\core\../misc/lv_gc.h
 stm32h743_lcd_temp\lv_refr.o: ..\Drivers\LVGL\src\core\../font/lv_font_fmt_txt.h
-stm32h743_lcd_temp\lv_refr.o: ..\Drivers\LVGL\src\core\../widgets/lv_label.h

@@ -4,52 +4,33 @@
 #if !(__ARMCC_VERSION >= 6010050)   /* 不是AC6编译器，即使用AC5编译器时 */
 
 /* 内存池(64字节对齐) */
-static __align(64) uint8_t mem1base[MEM1_MAX_SIZE];                                                           /* 内部SRAM内存池 */
 static __align(64) uint8_t mem2base[MEM2_MAX_SIZE] __attribute__((at(0XC01F4000)));                           /* 外部SDRAM内存池,前面2M给LTDC用了(1280*800*2) */
-static __align(64) uint8_t mem3base[MEM3_MAX_SIZE] __attribute__((at(0x30000000)));                           /* 内部SRAM1+SRAM2内存池 */
-static __align(64) uint8_t mem4base[MEM4_MAX_SIZE] __attribute__((at(0x38000000)));                           /* 内部SRAM4内存池 */
-static __align(64) uint8_t mem5base[MEM5_MAX_SIZE] __attribute__((at(0x20000000)));                           /* 内部DTCM内存池 */
-static __align(64) uint8_t mem6base[MEM6_MAX_SIZE] __attribute__((at(0x00000000)));                           /* 内部ITCM内存池  */
 
 /* 内存管理表 */
-static MT_TYPE mem1mapbase[MEM1_ALLOC_TABLE_SIZE];                                                            /* 内部SRAM内存池MAP */
+
 static MT_TYPE mem2mapbase[MEM2_ALLOC_TABLE_SIZE] __attribute__((at(0XC01F4000 + MEM2_MAX_SIZE)));            /* 外部SDRAM内存池MAP */
-static MT_TYPE mem3mapbase[MEM3_ALLOC_TABLE_SIZE] __attribute__((at(0x30000000 + MEM3_MAX_SIZE)));            /* 内部SRAM1+SRAM2内存池MAP */
-static MT_TYPE mem4mapbase[MEM4_ALLOC_TABLE_SIZE] __attribute__((at(0x38000000 + MEM4_MAX_SIZE)));            /* 内部SRAM4内存池MAP */
-static MT_TYPE mem5mapbase[MEM5_ALLOC_TABLE_SIZE] __attribute__((at(0x20000000 + MEM5_MAX_SIZE)));            /* 内部DTCM内存池MAP */
-static MT_TYPE mem6mapbase[MEM6_ALLOC_TABLE_SIZE] __attribute__((at(0x00000000 + MEM6_MAX_SIZE)));            /* 内部ITCM内存池MAP */
+
 
 #else      /* 使用AC6编译器时 */
 
 /* 内存池(64字节对齐) */
-static __ALIGNED(64) uint8_t mem1base[MEM1_MAX_SIZE];                                                         /* 内部SRAM内存池 */
 static __ALIGNED(64) uint8_t mem2base[MEM2_MAX_SIZE] __attribute__((section(".bss.ARM.__at_0XC01F4000")));    /* 外部SDRAM内存池,前面2M给LTDC用了(1280*800*2) */
-static __ALIGNED(64) uint8_t mem3base[MEM3_MAX_SIZE] __attribute__((section(".bss.ARM.__at_0x30000000")));    /* 内部SRAM1+SRAM2内存池 */
-static __ALIGNED(64) uint8_t mem4base[MEM4_MAX_SIZE] __attribute__((section(".bss.ARM.__at_0x38000000")));    /* 内部SRAM4内存池 */
-static __ALIGNED(64) uint8_t mem5base[MEM5_MAX_SIZE] __attribute__((section(".bss.ARM.__at_0x20000000")));    /* 内部DTCM内存池 */
-static __ALIGNED(64) uint8_t mem6base[MEM6_MAX_SIZE] __attribute__((section(".bss.ARM.__at_0x00000000")));    /* 内部ITCM内存池 */
+
 
 /* 内存管理表 */
-static MT_TYPE mem1mapbase[MEM1_ALLOC_TABLE_SIZE];                                                            /* 内部SRAM内存池MAP */
 static MT_TYPE mem2mapbase[MEM2_ALLOC_TABLE_SIZE] __attribute__((section(".bss.ARM.__at_0XC1E30000")));       /* 内部CCM内存池MAP */
-static MT_TYPE mem3mapbase[MEM3_ALLOC_TABLE_SIZE] __attribute__((section(".bss.ARM.__at_0X3003C000")));       /* 外部SRAM内存池MAP */
-static MT_TYPE mem4mapbase[MEM4_ALLOC_TABLE_SIZE] __attribute__((section(".bss.ARM.__at_0X3800F000")));       /* 内部CCM内存池MAP */
-static MT_TYPE mem5mapbase[MEM5_ALLOC_TABLE_SIZE] __attribute__((section(".bss.ARM.__at_0X2001E000")));       /* 外部SRAM内存池MAP */
-static MT_TYPE mem6mapbase[MEM6_ALLOC_TABLE_SIZE] __attribute__((section(".bss.ARM.__at_0X0000F000")));       /* 内部CCM内存池MAP */
+
 
 #endif
 
 /* 内存管理参数 */
-const uint32_t memtblsize[SRAMBANK] = { MEM1_ALLOC_TABLE_SIZE, MEM2_ALLOC_TABLE_SIZE, MEM3_ALLOC_TABLE_SIZE,
-                                        MEM4_ALLOC_TABLE_SIZE, MEM5_ALLOC_TABLE_SIZE, MEM6_ALLOC_TABLE_SIZE
+const uint32_t memtblsize[SRAMBANK] = { MEM2_ALLOC_TABLE_SIZE
                                       };  /* 内存表大小 */
 
-const uint32_t memblksize[SRAMBANK] = { MEM1_BLOCK_SIZE, MEM2_BLOCK_SIZE, MEM3_BLOCK_SIZE,
-                                        MEM4_BLOCK_SIZE, MEM5_BLOCK_SIZE, MEM6_BLOCK_SIZE
+const uint32_t memblksize[SRAMBANK] = { MEM2_BLOCK_SIZE
                                       };  /* 内存分块大小 */
 
-const uint32_t memsize[SRAMBANK] = { MEM1_MAX_SIZE, MEM2_MAX_SIZE, MEM3_MAX_SIZE,
-                                     MEM4_MAX_SIZE, MEM5_MAX_SIZE, MEM6_MAX_SIZE
+const uint32_t memsize[SRAMBANK] = { MEM2_MAX_SIZE
                                    };     /* 内存总大小 */
 
 /* 内存管理控制器 */
@@ -57,9 +38,9 @@ struct _m_mallco_dev mallco_dev=
 {
     my_mem_init,                                                                         /* 内存初始化 */
     my_mem_perused,                                                                      /* 内存使用率 */
-    mem1base, mem2base, mem3base, mem4base, mem5base, mem6base,                          /* 内存池 */
-    mem1mapbase, mem2mapbase, mem3mapbase, mem4mapbase, mem5mapbase, mem6mapbase,        /* 内存管理状态表 */
-    0, 0, 0, 0, 0, 0,                                                                    /* 内存管理未就绪 */
+    mem2base,            /* 内存池 */
+    mem2mapbase,        /* 内存管理状态表 */
+    0,                                                                     /* 内存管理未就绪 */
 };
 
 /**

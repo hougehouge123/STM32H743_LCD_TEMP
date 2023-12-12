@@ -41,7 +41,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+#define __FPU_USED       1U
+#define __FPU_PRESENT    1U
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -68,7 +69,13 @@ static void MPU_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+//开启fpu
+void fpu_enable(void)
+{
+  #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+	SCB->CPACR|=((3UL<<10*2)|(3UL<<11*2));
+  #endif
+}
 
 /* USER CODE END 0 */
 
@@ -102,6 +109,7 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
   SCB->CACR|=1<<2;   //开启透写缓存
+  fpu_enable();//开启fpu
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -113,13 +121,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   delay_init(480);
   sdram_init();//初始化sdram
-//  my_mem_init(SRAMIN);                       /* 初始化内部内存池(AXI) */
-//  my_mem_init(SRAMEX);                       /* 初始化外部内存池(SDRAM) */
-//  my_mem_init(SRAM12);                       /* 初始化SRAM12内存池(SRAM1+SRAM2) */
-//  my_mem_init(SRAM4);                        /* 初始化SRAM4内存池(SRAM4) */
-//  my_mem_init(SRAMDTCM);                     /* 初始化DTCM内存池(DTCM) */
-//  my_mem_init(SRAMITCM);                     /* 初始化ITCM内存池(ITCM) */
-//  ftl_init();//初始化ftl
+  my_mem_init(SRAMEX);                       /* 初始化外部内存池(SDRAM) */
+  ftl_init();//初始化ftl
   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,1);//点亮背光
 	lv_init();//初始化lvgl
   lv_port_disp_init();//初始化显示屏
