@@ -82,11 +82,6 @@ void fpu_enable(void)
 void getfree()
 {
   uint32_t total, free;
-  printf("norflash获取容量%d\n",exfuns_get_free((uint8_t *)"0:", &total, &free));
-  delay_ms(1000);
-  printf("norflash获取容量%d\n",exfuns_get_free((uint8_t *)"0:", &total, &free));
-  printf("NORFLASH总容量为:%dM,剩余容量为:%dM\r\n", total>>10, free>>10);
-  delay_ms(1000);
   printf("nandflash获取容量%d\n",exfuns_get_free((uint8_t *)"1:", &total, &free));
   printf("NANDFLASH总容量为:%dM,剩余容量为:%dM\r\n", total>>10, free>>10);
 }
@@ -137,7 +132,7 @@ int main(void)
   my_mem_init(SRAMEX); // 初始化外部内存池(SDRAM)
   ftl_init();//初始化nand_flash
   exfuns_init();//初始化文件系统
-  fatfs_init();//初始化fatfs
+  f_mount(fs[1],"1:",1);//挂载文件系统
   getfree();//获取剩余容量
   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,1);//点亮背光
 	lv_init();//初始化lvgl
