@@ -32,6 +32,7 @@
 #include "lvgl.h"
 #include "lv_port_disp.h"
 #include "lv_port_indev.h"
+#include "lv_demos.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -108,16 +109,12 @@ int main(void)
   /* USER CODE BEGIN 2 */
   sdram_init();//初始化sdram
   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,1);//点亮背光
-  //初始化lvgl
-	lv_init();
-	//初始化显示屏
-  lv_port_disp_init();
-  //初始化触摸屏
-  lv_port_indev_init();
-  //初始化定时器
-  HAL_TIM_Base_Start_IT(&htim3);
+	lv_init();//初始化lvgl
+  lv_port_disp_init();//初始化显示屏
+  lv_port_indev_init();//初始化触摸屏
+  HAL_TIM_Base_Start_IT(&htim3);//初始化定时器
   /* USER CODE END 2 */
-
+  lv_demo_widgets();
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)

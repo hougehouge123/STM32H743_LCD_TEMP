@@ -30,6 +30,7 @@ stm32h743_lcd_temp\sdram.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fl
 stm32h743_lcd_temp\sdram.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h
 stm32h743_lcd_temp\sdram.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sram.h
 stm32h743_lcd_temp\sdram.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_fmc.h
+stm32h743_lcd_temp\sdram.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_nand.h
 stm32h743_lcd_temp\sdram.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h
 stm32h743_lcd_temp\sdram.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h
 stm32h743_lcd_temp\sdram.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h

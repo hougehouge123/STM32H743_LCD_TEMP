@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H743xx,LV_CONF_INCLUDE_SIMPLE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;..\Drivers\TFT_LCD;..\Drivers\LVGL;..\Drivers\LVGL\demos;..\Drivers\LVGL\porting;..\Drivers\LVGL\src;..\Drivers\SDRAM</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;..\Drivers\TFT_LCD;..\Drivers\LVGL;..\Drivers\LVGL\demos;..\Drivers\LVGL\porting;..\Drivers\LVGL\src;..\Drivers\SDRAM;..\Drivers\NAND;..\Drivers\MPU;..\Drivers\MALLOC;..\Drivers\Delay</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -632,6 +632,62 @@
               <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sram.c</FilePath>
             </File>
             <File>
+              <FileName>stm32h7xx_hal_nand.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_nand.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>1</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>0</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <uGnu>2</uGnu>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+            <File>
               <FileName>stm32h7xx_hal_sdram.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sdram.c</FilePath>
@@ -723,19 +779,9 @@
           <GroupName>TFT_LCD</GroupName>
           <Files>
             <File>
-              <FileName>font.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Drivers\TFT_LCD\font.h</FilePath>
-            </File>
-            <File>
               <FileName>ILI93xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\TFT_LCD\ILI93xx.c</FilePath>
-            </File>
-            <File>
-              <FileName>ILI93xx.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Drivers\TFT_LCD\ILI93xx.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -743,19 +789,9 @@
           <GroupName>Touch</GroupName>
           <Files>
             <File>
-              <FileName>gt9xxx.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Drivers\TFT_LCD\gt9xxx.h</FilePath>
-            </File>
-            <File>
               <FileName>gt9xxx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\TFT_LCD\gt9xxx.c</FilePath>
-            </File>
-            <File>
-              <FileName>ctiic.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Drivers\TFT_LCD\ctiic.h</FilePath>
             </File>
             <File>
               <FileName>ctiic.c</FileName>
@@ -788,29 +824,14 @@
               <FilePath>..\Drivers\LVGL\porting\lv_port_disp.c</FilePath>
             </File>
             <File>
-              <FileName>lv_port_disp.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Drivers\LVGL\porting\lv_port_disp.h</FilePath>
-            </File>
-            <File>
               <FileName>lv_port_fs.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\LVGL\porting\lv_port_fs.c</FilePath>
             </File>
             <File>
-              <FileName>lv_port_fs.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Drivers\LVGL\porting\lv_port_fs.h</FilePath>
-            </File>
-            <File>
               <FileName>lv_port_indev.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\LVGL\porting\lv_port_indev.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_port_indev.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Drivers\LVGL\porting\lv_port_indev.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2762,10 +2783,55 @@
               <FileType>1</FileType>
               <FilePath>..\Drivers\SDRAM\sdram.c</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>NAND_FLASH</GroupName>
+          <Files>
             <File>
-              <FileName>sdram.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Drivers\SDRAM\sdram.h</FilePath>
+              <FileName>ftl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\NAND\ftl.c</FilePath>
+            </File>
+            <File>
+              <FileName>nand.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\NAND\nand.c</FilePath>
+            </File>
+            <File>
+              <FileName>nandtester.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\NAND\nandtester.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>MALLOC</GroupName>
+          <Files>
+            <File>
+              <FileName>malloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\MALLOC\malloc.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>MPU</GroupName>
+          <Files>
+            <File>
+              <FileName>mpu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\MPU\mpu.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Delay</GroupName>
+          <Files>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\Delay\delay.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -125,3 +125,4 @@ stm32h743_lcd_temp\lv_demo_widgets.o: ..\Drivers\LVGL\demos\widgets\../../src/ex
 stm32h743_lcd_temp\lv_demo_widgets.o: ..\Drivers\LVGL\demos\widgets\../../src/extra/libs/freetype/lv_freetype.h
 stm32h743_lcd_temp\lv_demo_widgets.o: ..\Drivers\LVGL\demos\widgets\../../src/extra/libs/rlottie/lv_rlottie.h
 stm32h743_lcd_temp\lv_demo_widgets.o: ..\Drivers\LVGL\demos\widgets\../../src/extra/libs/ffmpeg/lv_ffmpeg.h
+stm32h743_lcd_temp\lv_demo_widgets.o: ..\Drivers\LVGL\demos\widgets\../widgets/lv_demo_widgets.h
