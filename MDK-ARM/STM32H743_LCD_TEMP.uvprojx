@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H743xx,LV_CONF_INCLUDE_SIMPLE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;..\Drivers\TFT_LCD;..\Drivers\LVGL;..\Drivers\LVGL\demos;..\Drivers\LVGL\porting;..\Drivers\LVGL\src;..\Drivers\SDRAM;..\Drivers\MALLOC;..\Drivers\Delay;..\Drivers\NAND;..\Drivers\MPU;..\Drivers\FATFS\source;..\Drivers\FATFS\exfuns;..\Drivers\NORFLASH;..\Drivers\QSPI</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;..\Drivers\TFT_LCD;..\Drivers\LVGL;..\Drivers\LVGL\demos;..\Drivers\LVGL\porting;..\Drivers\LVGL\src;..\Drivers\SDRAM;..\Drivers\MALLOC;..\Drivers\Delay;..\Drivers\NAND;..\Drivers\MPU;..\Drivers\FATFS\source;..\Drivers\FATFS\exfuns;..\Drivers\NORFLASH;..\Drivers\QSPI;..\Drivers\USB\USB_APP;..\Drivers\USB\STM32_USB_Host_Library\Core\Src;..\Drivers\USB\STM32_USB_Host_Library\Core\Inc;..\Drivers\USB\STM32_USB_Host_Library\Class\MSC\Src;..\Drivers\USB\STM32_USB_Host_Library\Class\MSC\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -3053,6 +3053,116 @@
               <FileName>qspi.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Drivers\QSPI\qspi.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USB/CORE</GroupName>
+          <Files>
+            <File>
+              <FileName>usbh_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Core\Src\usbh_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ctlreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Core\Src\usbh_ctlreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ioreq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Core\Src\usbh_ioreq.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_pipes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Core\Src\usbh_pipes.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_core.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Core\Inc\usbh_core.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ctlreq.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_def.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Core\Inc\usbh_def.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_ioreq.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_pipes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USB/CLASS</GroupName>
+          <Files>
+            <File>
+              <FileName>usbh_msc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_msc_bot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc_bot.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_msc_scsi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc_scsi.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_msc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_msc_bot.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_bot.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_msc_scsi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\USB\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_scsi.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USB/APP</GroupName>
+          <Files>
+            <File>
+              <FileName>usbh_conf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\USB\USB_APP\usbh_conf.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\USB\USB_APP\usbh_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\USB\USB_APP\usbh_diskio.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_diskio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\USB\USB_APP\usbh_diskio.h</FilePath>
             </File>
           </Files>
         </Group>

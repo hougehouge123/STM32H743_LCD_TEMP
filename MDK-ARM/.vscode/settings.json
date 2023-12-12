@@ -13,6 +13,9 @@
         "lv_demo_widgets.h": "c",
         "stdio.h": "c",
         "ff.h": "c",
-        "exfuns.h": "c"
+        "exfuns.h": "c",
+        "usbh_msc.h": "c",
+        "usbh_core.h": "c",
+        "usbh_conf.h": "c"
     }
 }
